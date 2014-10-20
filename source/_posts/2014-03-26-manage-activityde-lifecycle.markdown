@@ -3,7 +3,7 @@ layout: post
 title: "管理Activity的生命周期"
 date: 2014-03-25 19:48:47 +0800
 comments: true
-categories: android
+tags: android
 ---
 
 Activity是android的四大组件之一，我们编写程序时，主要通过Activity来显示我们的UI。我们需要了解他的生命周期，以及 每个周期可以做什么。

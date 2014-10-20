@@ -3,7 +3,7 @@ layout: post
 title: "使用Gradle构建Android项目"
 date: 2014-05-20 22:00:06 +0800
 comments: true
-categories: ['android', 'gradle']
+tags: ['android', 'gradle']
 ---
 
 新项目中，使用了Google I/O 2013发布的新工具，使用Gradle构建android项目，并且在新版的Intellig IDEA以及google的Android Studio对其支持。本文就介绍一下怎么使用gradle构建android项目，进行多个版本编译。

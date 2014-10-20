@@ -3,7 +3,7 @@ layout: post
 title: "ubuntu快速变装mac"
 date: 2014-05-09 22:40:06 +0800
 comments: true
-categories: ['linux','ubuntu']
+tags: ['linux','ubuntu']
 ---
 
 其实，我喜欢Mac的，想要有个MacBook，喜欢其婀娜多姿的身材，妩媚的脸庞，最终要的是有一个UNIX的心。可惜，屌丝买不起啊，只好用Ubuntu来装装Mac了，有什么办法变装呢，那就是安装主题，哈哈。

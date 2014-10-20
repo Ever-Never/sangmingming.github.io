@@ -1,7 +1,7 @@
 title: "intent和intent过滤以及匹配规则"
 date: 2014-09-16 22:41:27
 comments: true
-categories: ['android']
+tags: ['android']
 ---
 
 在Android系统中打开Activity，Service, BroadCast 都需要使用到Intent(意图),那么作为一个开发者就需要知道怎么使用Intent，知道怎么通过Intent的匹配规则打开其他的组件,或者给其他组件提供访问接口。因此在这里总结一下Intent和Intent的匹配规则。

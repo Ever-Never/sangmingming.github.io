@@ -3,7 +3,7 @@ layout: post
 title: "在python中使用mysql"
 date: 2014-04-27 22:36:29 +0800
 comments: true
-categories: ['mysql', 'python']
+tags: ['mysql', 'python']
 ---
 
 

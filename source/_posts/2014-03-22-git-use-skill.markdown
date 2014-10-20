@@ -3,7 +3,7 @@ layout: post
 title: "git使用技巧"
 date: 2013-11-18 23:23:33 +0800
 comments: true
-categories: ['git','linux']
+tags: ['git','linux']
 ---
 
 

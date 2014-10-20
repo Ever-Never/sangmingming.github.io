@@ -3,7 +3,7 @@ layout: post
 title: "Java中Collection和Collections的区别"
 date: 2013-07-23 19:12:46 +0800
 comments: true
-categories: java
+tags: java
 ---
 前几天去一个公司参加面试遇到这个问题，Java中Collection和Collections的区别，当时不会，回来从网上找到，现在记录一下。
 

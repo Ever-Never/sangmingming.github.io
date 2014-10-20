@@ -3,7 +3,7 @@ layout: post
 title: "解决Ubuntu下Sublime text 3中文输入的问题"
 date: 2014-03-15 00:24:45 +0800
 comments: true
-categories: [linux,ubuntu]
+tags: [linux,ubuntu]
 ---
 
 好久之前便听朋友说起Sublime Text这款软件很好用，终于这几天有空折腾，把软件给装起来了。用起来确实很不错，写代码很爽。   

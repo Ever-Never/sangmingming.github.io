@@ -3,7 +3,7 @@ layout: post
 title: "Android图像开源视图：SmartImageView"
 date: 2013-09-11 23:19:11 +0800
 comments: true
-categories: android
+tags: android
 ---
 
 项目需要，开发中需要加载图片，自己要写图片从网上下载的方法，还要写缓存，等等。  

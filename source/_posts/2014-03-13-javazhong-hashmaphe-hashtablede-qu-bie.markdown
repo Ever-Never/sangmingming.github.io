@@ -3,7 +3,7 @@ layout: post
 title: "Java中HashMap和HashTable的区别"
 date: 2013-07-28 21:30:01 +0800
 comments: true
-categories: java
+tags: java
 ---
 
 面试中遇到，但是不会，回来google到，分享下吧，据说是老掉牙的问题

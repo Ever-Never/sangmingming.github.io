@@ -3,7 +3,7 @@ layout: post
 title: "android推送技术方案与原理"
 date: 2014-08-01 23:17:49 +0800
 comments: true
-categories: ['android']
+tags: ['android']
 ---
 
 

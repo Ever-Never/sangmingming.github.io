@@ -1,7 +1,7 @@
 title: git中merge和rebase的区别
 comments: true
 date: 2014-09-26 22:19:45
-categories: ["git"]
+tags: ["git"]
 ---
 
 

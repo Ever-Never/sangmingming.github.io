@@ -3,7 +3,7 @@ layout: post
 title: "android中网络操作使用总结（http）"
 date: 2014-05-11 22:49:26 +0800
 comments: true
-categories: ['android']
+tags: ['android']
 ---
 
 

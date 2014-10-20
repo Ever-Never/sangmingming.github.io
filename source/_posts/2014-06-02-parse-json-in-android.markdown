@@ -3,7 +3,7 @@ layout: post
 title: "android中JSON的解析"
 date: 2014-06-04 22:57:01 +0800
 comments: true
-categories: ['android','json']
+tags: ['android','json']
 ---
 
 

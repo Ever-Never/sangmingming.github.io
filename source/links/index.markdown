@@ -9,19 +9,12 @@ footer: true
 
 
 
-+   [Qingsongwang的生活学习感悟](http://qingsongwang.sinaapp.com/)
-
-+   [PHP开发Mckee](http://www.phpddt.com/)
-
-+   [yywang’s Blog(.net,java大牛)](http://yywang.info/)
-
-+   [Andy的博客](http://blog.andyliu.net/)
-
-+   [做点什么，说点什么](http://zhenghuiyan.sinaapp.com/)
-
-+   [郑泽鑫博客](http://zhengzexin.com/)
-
-
++	[Qingsongwang的生活学习感悟](http://qingsongwang.sinaapp.com/)
++	[PHP开发Mckee](http://www.phpddt.com/)
++	[yywang’s Blog(.net,java大牛)](http://yywang.info/)
++	[Andy的博客](http://blog.andyliu.net/)
++	[做点什么，说点什么](http://zhenghuiyan.sinaapp.com/)
++	[郑泽鑫博客](http://zhengzexin.com/)
 
 
 

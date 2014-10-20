@@ -3,7 +3,7 @@ layout: post
 title: "Android消息循环分析"
 date: 2014-04-02 23:53:59 +0800
 comments: true
-categories:  android
+tags:  android
 ---
 
 

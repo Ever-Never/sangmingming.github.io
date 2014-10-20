@@ -3,7 +3,7 @@ layout: post
 title: "使用Intent启动组件"
 date: 2014-06-15 23:19:37 +0800
 comments: true
-categories: ['android', 'intent'] 
+tags: ['android', 'intent'] 
 ---
 
 

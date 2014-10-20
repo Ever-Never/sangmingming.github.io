@@ -3,7 +3,7 @@ layout: post
 title: "一个程序员的Ubuntu安装的那些软件"
 date: 2014-06-22 12:57:52 +0800
 comments: true
-categories: ['ubuntu','linux']
+tags: ['ubuntu','linux']
 ---
 
 

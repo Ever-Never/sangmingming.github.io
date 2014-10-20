@@ -3,7 +3,7 @@ layout: post
 title: "Linux下SVN的使用"
 date: 2013-07-12 21:30:52 +0800
 comments: true
-categories: linux
+tags: linux
 ---
 
 今天在新浪sae上搭建了个人博客，新浪sae采用svn的方式进行代码管理，之前在windows下面做svn操作都是采用TortoiseSVN，今天正好开机到了linux下面，那么好吧，就用svn传我的wordpress到sae中去。

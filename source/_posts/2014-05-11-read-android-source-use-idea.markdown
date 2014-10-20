@@ -3,7 +3,7 @@ layout: post
 title: "使用Intellij IDEA阅读android源码"
 date: 2014-05-11 23:46:09 +0800
 comments: true
-categories: ['android']
+tags: ['android']
 ---
 
 一直使用Ubuntu+Intellig IDEA进行android开发，并且android源码已经花了两三个星期下载回来了，但是linux平台，没有好用的source insight，所以一直阅读都是需要看哪个了才去搜索那一个。原来发现，原来android提供了eclipse，idea等工具进行阅读的方法。

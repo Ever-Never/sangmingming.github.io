@@ -3,7 +3,7 @@ layout: post
 title: "使用git同步网站代码"
 date: 2014-04-09 13:41:38 +0800
 comments: true
-categories: ['git', 'linux']
+tags: ['git', 'linux']
 ---
 
 

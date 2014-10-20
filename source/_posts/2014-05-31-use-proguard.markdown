@@ -3,7 +3,7 @@ layout: post
 title: "使用proguard混淆android代码"
 date: 2014-05-31 10:24:38 +0800
 comments: true
-categories: ['android']
+tags: ['android']
 ---
 
 当前是有些工具比如apktool，dextojar等是可以对我们android安装包进行反编译，获得源码的。为了减少被别人破解，导致源码泄露，程序被别人盗取代码，等等。我们需要对代码进行混淆，android的sdk中为我们提供了ProGrard这个工具，可以对代码进行混淆（一般是用无意义的名字来重命名），以及去除没有使用到的代码，对程序进行优化和压缩，这样可以增加你想的难度。最近我做的项目，是我去配置的混淆配置，因此研究了一下，这里分享一下。

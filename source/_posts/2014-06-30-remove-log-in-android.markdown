@@ -3,7 +3,7 @@ layout: post
 title: "发布程序时移除Android 调试Log"
 date: 2014-06-30 16:21:00 +0800
 comments: true
-categories: ['android','gradle']
+tags: ['android','gradle']
 ---
 
 

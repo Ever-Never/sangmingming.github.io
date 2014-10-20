@@ -3,7 +3,7 @@ layout: post
 title: "在Ubuntu下配置Android开发环境"
 date: 2014-06-28 17:56:05 +0800
 comments: true
-categories: ['android','ubuntu']
+tags: ['android','ubuntu']
 ---
 
 

@@ -1,7 +1,7 @@
 title: Android中个人推崇的数据库使用方式
 comments: true
 date: 2014-10-13 23:19:20
-categories: ['android', 'sqlite']
+tags: ['android', 'sqlite']
 ---
 
 手机应用开发中经常会使用到数据库存储一些资料或者进行数据缓存，android中为我们提供了一个轻量的数据库，在上层进行了一层封装，同时还为我们提供了ContentProvider的框架，方便我们进行数据操作，以及在不同的程序之间进行数据共享。本文介绍一下，我在使用数据库的一些我认为比较好的习惯，欢迎与我讨论。
