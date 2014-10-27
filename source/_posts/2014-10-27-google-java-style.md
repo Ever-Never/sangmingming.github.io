@@ -5,10 +5,6 @@ tags: ['java']
 ---
 
 
-作者：Hawstein
-出处：[http://hawstein.com/posts/google-java-style.html](http://hawstein.com/posts/google-java-style.html)
-声明：本文采用以下协议进行授权： [自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0](http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh) ，转载请注明作者及出处。
-
 ## 目录
 
 1. [前言](#Intro)
@@ -28,6 +24,8 @@ tags: ['java']
 与其它的编程风格指南一样，这里所讨论的不仅仅是编码格式美不美观的问题，
 同时也讨论一些约定及编码标准。然而，这份文档主要侧重于我们所普遍遵循的规则，
 对于那些不是明确强制要求的，我们尽量避免提供意见。
+
+<!--more-->
 
 ### 1.1 术语说明
 
@@ -669,4 +667,8 @@ public int method(String p1) { ... }
 
 本文档翻译自[Google Java Style](http://google-styleguide.googlecode.com/svn/trunk/javaguide.html)，
 译者[@Hawstein](http://weibo.com/hawstein)。
+
+作者：Hawstein
+出处：[http://hawstein.com/posts/google-java-style.html](http://hawstein.com/posts/google-java-style.html)
+声明：本文采用以下协议进行授权： [自由转载-非商用-非衍生-保持署名|Creative Commons BY-NC-ND 3.0](http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh) ，转载请注明作者及出处。
 
