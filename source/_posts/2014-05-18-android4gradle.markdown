@@ -12,13 +12,10 @@ tags: ['android', 'gradle']
 [Gradle](http://www.gradle.org/)是以Groovy为基础，面向java应用，基于DSL语法的自动化构建工具。是google引入，替换ant和maven的新工具，其依赖兼容maven和ivy。      
 使用gradle的目的: 
              
-+   更容易重用资源和代码； 
-   
-+   可以更容易创建不同的版本的程序，多个类型的apk包；   
- 
-+   更容易配置，扩展;   
-  
-+   更好的IDE集成;  
++ 更容易重用资源和代码;   
++ 可以更容易创建不同的版本的程序，多个类型的apk包；   
++ 更容易配置，扩展;    
++ 更好的IDE集成;  
    
 <!--more-->
 ### 环境需求
@@ -62,11 +59,8 @@ android{...}
 通常会有以下任务：
 
 + assemble   The task to assemble the output(s) of the project（输出一个项目文件，android就是打包apk）
-
 + check      The task to run all the checks.（运行检查，检查程序的错误，语法，等等）
-
 + build      This task does both assemble and check  （执行assemble和check）
-
 + clean      This task cleans the output of the project(清理项目输出文件)
 
 >上面的任务assemble，check，build实际上什么都不做，他们其实都是其他任务的集合。
@@ -84,19 +78,13 @@ gradle支持任务名缩写，在我们执行*gradle assembleRelease*的时候�
 我们可以在build.gradle文件中配置我们的程序版本等信息，从而可以生成多个版本的程序。     
 支持的配置有：    
  
-+ minSdkVersion    最小支持sdk版本  
-      
-+ targetSdkVersion  编译时的目标sdk版本     
-
-+ versionCode       程序版本号     
-  
-+ versionName       程序版本名称     
- 
-+ packageName       程序包名     
-   
-+ Package Name for the test application 测试用的程序包名   
-     
-+ Instrumentation test runner   测试用的instrumentation实例      
++ minSdkVersion    最小支持sdk版本 
++ targetSdkVersion  编译时的目标sdk版本
++ versionCode       程序版本号
++ versionName       程序版本名称
++ packageName       程序包名
++ Package Name for the test application 测试用的程序包名
++ Instrumentation test runner   测试用的instrumentation实例
 
 例如：
 ```
@@ -405,3 +393,6 @@ lintOptions {
 关于怎么安装，没有讲到，可以参考这篇文章：[http://stormzhang.github.io/android/2014/02/28/android-gradle/](http://stormzhang.github.io/android/2014/02/28/android-gradle/)
 
 附上我参考的文档，没看懂的可以去看看。[http://tools.android.com/tech-docs/new-build-system/user-guide](http://tools.android.com/tech-docs/new-build-system/user-guide)  
+
+
+>gradle升级了，我又写了一篇，地址这里:[http://blog.isming.me/2014/11/21/use-gradle-new/](http://blog.isming.me/2014/11/21/use-gradle-new/)
