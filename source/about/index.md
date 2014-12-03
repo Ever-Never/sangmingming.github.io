@@ -17,7 +17,7 @@ footer: true
 +   蔷薇小说-精品小说阅读：[http://www.qwsy.com/app_android.aspx](http://www.qwsy.com/app_android.aspx)
 +   游戏典-游戏应用市场：[http://www.ucdin.com/download/downpage/web.html](http://www.ucdin.com/download/downpage/web.html)       
 +   世界杯闹钟：[http://app.xiaomi.com/detail/63648](http://app.xiaomi.com/detail/63648)       
-+   妹子图-高清妹子图（因为静网2014，已经无应用市场发布）：[点击下载](http://isming.qiniudn.com/meizi.apk)
++   妹子图-高清妹子图：[http://app.mi.com/detail/60408](http://app.mi.com/detail/60408)
 
 ## 关于博客
 
