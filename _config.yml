@@ -90,6 +90,6 @@ plugins:
 deploy:
   type: git
   repo:
-      github: git@github.com:sangmingming/sangmingming.github.io,master
-      gitcafe: git@gitcafe.com:sangmingming/blog.git,gitcafe-pages
+    github: git@github.com:sangmingming/sangmingming.github.io.git,master
+    gitcafe: git@gitcafe.com:sangmingming/blog.git,gitcafe-pages
 
