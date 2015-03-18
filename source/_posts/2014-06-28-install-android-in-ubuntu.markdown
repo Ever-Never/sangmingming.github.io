@@ -39,3 +39,6 @@ sudo apt-get install oracle-java7-set-default
 
 ### 第一次启动
 启动IDEA，创建一个Android 项目，会提示你设置JDK和Android SDK。这就OK了。
+
+
+>原文地址：[http://blog.isming.me/2014/06/28/install-android-in-ubuntu](http://blog.isming.me/2014/06/28/install-android-in-ubuntu)，转载请注明出处。
