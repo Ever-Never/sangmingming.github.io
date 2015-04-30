@@ -15,9 +15,8 @@ footer: true
 +	[Andy的博客](http://blog.andyliu.net/)
 +	[做点什么，说点什么](http://zhenghuiyan.sinaapp.com/)
 +	[郑泽鑫博客](http://zhengzexin.com/)
-
-
-
++	[谭东jay（创新的Android开发者）](http://www.aplesson.com)
++	MaTianyu，杭州开发者，开源爱好者，热爱移动互联网 [博客](http://vmatianyu.cn)  [Lite开源站](http://litesuits.com)
 >本链接表用于记录网上的朋友，如果你也是一个技术博主，欢迎交换链接。
 
 
