@@ -25,7 +25,7 @@ footer: true
 
 ## 联系我
 
-+ 邮箱： [ming_1990@qq.com](mailto:ming_1990@qq.com)   [linming1007@gmail.com](mailto:linming1007@gmail.com)
++ 邮箱： [sangmingming@vip.qq.com](mailto:sangmingming@vip.qq.com)   [linming1007@gmail.com](mailto:linming1007@gmail.com)
 + 微博： [@码农明明桑](http://weibo.com/mingmingsang)
 	
 

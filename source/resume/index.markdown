@@ -12,11 +12,10 @@ footer: true
 
 
 
-###应聘上海地区android开发
 
 >2年开发经验 | 男 | 本科 | 24岁                   
 >手机：*15155185270*           
->邮箱：*linming1007@gmail.com*                     
+>邮箱：*sangmingming@vip.qq.com*                     
 >博客：[http://blog.isming.me](http://blog.isming.me)
 
 
@@ -99,7 +98,3 @@ footer: true
 
 ##自我评价                                                                                       
 >技术宅，爱运动，爱摄影。爱技术，学习能力强，能够很快学习新技能，并运用到实际项目。爱折腾，喜欢且乐于接触新事物，新技术。热爱移动互联网，梦想能够开发一款好用的app，希望能够加入一个有爱的团队，有技术氛围，大家能够互相交流，能够有共同的目标。
-
-
-
-#####欢迎上海地区互联网公司与我联系，简历word版：[点击下载word版](http://isming.qiniudn.com/sangmingming_resume.doc)
