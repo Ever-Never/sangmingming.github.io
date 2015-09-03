@@ -4,7 +4,7 @@
   <subtitle><![CDATA[技术路上的一些记录]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.isming.me/"/>
-  <updated>2015-08-31T12:06:15.000Z</updated>
+  <updated>2015-09-03T14:05:17.000Z</updated>
   <id>http://blog.isming.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.isming.me/2015/08/31/modify-alert-style/"/>
     <id>http://blog.isming.me/2015/08/31/modify-alert-style/</id>
     <published>2015-08-31T11:57:15.000Z</published>
-    <updated>2015-08-31T12:06:15.000Z</updated>
+    <updated>2015-09-03T14:05:17.000Z</updated>
     <content type="html"><![CDATA[<p>android最近的support库提供了AlertDialog，可以让我们在低于5.0的系统使用到跟5.0系统一样的Material Design风格的对话框，但是使用了一段时间想到一些办法去改变对话框按钮字体的颜色，都不生效。</p>
 <p>最近在网上找到了改变的方法，首先来说一下。</p>
 <a id="more"></a>
@@ -30,8 +30,7 @@
 <p>这样的方法是每个地方使用的时候，都要在构造函数传我们的这个Dialog的Theme，我们也可以全局的定义对话框的样式。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span> <span class="attribute">name</span>=<span class="value">"MyTheme"</span> <span class="attribute">parent</span>=<span class="value">"Base.Theme.AppCompat.Light"</span>&gt;</span><span class="css"></span><br><span class="line">    &lt;<span class="tag">item</span> <span class="tag">name</span>="<span class="tag">alertDialogTheme</span>"&gt;<span class="at_rule">@<span class="keyword">style/MyAlertDialogStyle&lt;/item&gt;</span></span><br><span class="line">    &lt;item name=<span class="string">"colorAccent"</span>&gt;@color/accent&lt;/item&gt;</span><br><span class="line"></span></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>在我们的AndroidManifest.xml文件中声明application或者activity的时候设置theme为MyTheme即可，不过需要注意的一点是，我们的Activity需要继承自AppCompatActivity。</p>
-<p>###其他</p>
-<p>从上面改变对话框的样式，可以想到用同样的思路来实现应用的换肤，应用主题之类的功能。</p>
+<h3 id="其他">其他</h3><p>从上面改变对话框的样式，可以想到用同样的思路来实现应用的换肤，应用主题之类的功能。</p>
 <blockquote>
 <p>原文地址：<a href="http://blog.isming.me/2015/08/31/modify-alert-style/">http://blog.isming.me/2015/08/31/modify-alert-style/</a>，转载请注明出处。</p>
 </blockquote>
