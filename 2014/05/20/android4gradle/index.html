@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用Gradle构建Android项目 | 码农明明桑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="新项目中，使用了Google I/O 2013发布的新工具，使用Gradle构建android项目，并且在新版的Intellig IDEA以及google的Android Studio对其支持。本文就介绍一下怎么使用gradle构建android项目，进行多个版本编译。
+Gradle是什么？Gradle是以Groovy为基础，面向java应用，基于DSL语法的自动化构建工具。是google引入，替">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Gradle构建Android项目">
+<meta property="og:url" content="http://blog.isming.me/2014/05/20/android4gradle/index.html">
+<meta property="og:site_name" content="码农明明桑">
+<meta property="og:description" content="新项目中，使用了Google I/O 2013发布的新工具，使用Gradle构建android项目，并且在新版的Intellig IDEA以及google的Android Studio对其支持。本文就介绍一下怎么使用gradle构建android项目，进行多个版本编译。
+Gradle是什么？Gradle是以Groovy为基础，面向java应用，基于DSL语法的自动化构建工具。是google引入，替">
+<meta property="og:updated_time" content="2014-12-17T01:56:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Gradle构建Android项目">
+<meta name="twitter:description" content="新项目中，使用了Google I/O 2013发布的新工具，使用Gradle构建android项目，并且在新版的Intellig IDEA以及google的Android Studio对其支持。本文就介绍一下怎么使用gradle构建android项目，进行多个版本编译。
+Gradle是什么？Gradle是以Groovy为基础，面向java应用，基于DSL语法的自动化构建工具。是google引入，替">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://isming.qiniudn.com/my_avatar.jpg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Sam</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">技术路上的一些记录</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/links">朋友</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sangmingming" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/mingmingsang" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Sam</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://isming.qiniudn.com/my_avatar.jpg">
+				<hgroup>
+				  <h1 class="header-author">Sam</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">技术路上的一些记录</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/links">朋友</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sangmingming" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/mingmingsang" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-android4gradle" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/05/20/android4gradle/" class="article-date">
+  	<time datetime="2014-05-20T14:00:06.000Z" itemprop="datePublished">2014年5月20日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用Gradle构建Android项目
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gradle/">gradle</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>新项目中，使用了Google I/O 2013发布的新工具，使用Gradle构建android项目，并且在新版的Intellig IDEA以及google的Android Studio对其支持。本文就介绍一下怎么使用gradle构建android项目，进行多个版本编译。</p>
+<h3 id="Gradle是什么？">Gradle是什么？</h3><p><a href="http://www.gradle.org/" target="_blank" rel="external">Gradle</a>是以Groovy为基础，面向java应用，基于DSL语法的自动化构建工具。是google引入，替换ant和maven的新工具，其依赖兼容maven和ivy。<br>使用gradle的目的: </p>
+<ul>
+<li>更容易重用资源和代码;   </li>
+<li>可以更容易创建不同的版本的程序，多个类型的apk包；   </li>
+<li>更容易配置，扩展;    </li>
+<li>更好的IDE集成;  </li>
+</ul>
+<a id="more"></a>
+<h3 id="环境需求">环境需求</h3><p>Gradle1.10或者更高版本，grale插件0.9或者更高版本.<br>android SDK需要有Build Tools 19.0.0以及更高版本      </p>
+<h3 id="Gradle基本结构">Gradle基本结构</h3><p>使用ide创建的gradle构建的项目，会自动创建一个build.gradle，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;&#10;    repositories &#123;&#10;        mavenCentral()&#10;    &#125;&#10;&#10;    dependencies &#123;&#10;        classpath &#39;com.android.tools.build:gradle:0.9.0&#39;&#10;    &#125;&#10;&#125;&#10;&#10;apply plugin: &#39;android&#39;&#10;&#10;android &#123;&#10;    compileSdkVersion 19&#10;    buildToolsVersion &#34;19.0.0&#34;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，构建文件主要有三个区域：</p>
+<p>buildscript{…}       </p>
+<blockquote>
+<p>Configures the build script classpath for this project. 设置脚本的运行环境</p>
+</blockquote>
+<p>apply plugin: ‘android’     </p>
+<blockquote>
+<p>设置使用android插件构建项目</p>
+</blockquote>
+<p>android{…}</p>
+<blockquote>
+<p>设置编译android项目的参数</p>
+</blockquote>
+<h3 id="任务task的执行">任务task的执行</h3><p>通常会有以下任务：</p>
+<ul>
+<li>assemble   The task to assemble the output(s) of the project（输出一个项目文件，android就是打包apk）</li>
+<li>check      The task to run all the checks.（运行检查，检查程序的错误，语法，等等）</li>
+<li>build      This task does both assemble and check  （执行assemble和check）</li>
+<li>clean      This task cleans the output of the project(清理项目输出文件)</li>
+</ul>
+<blockquote>
+<p>上面的任务assemble，check，build实际上什么都不做，他们其实都是其他任务的集合。</p>
+</blockquote>
+<p>执行一个任务的方式为<code>gradle 任务名</code>， 如<code>gradle assemble</code></p>
+<p>在android项目中还有connectedCheck（检查连接的设备或模拟器），deviceCheck（检查设备使用的api版本）</p>
+<p>通常我们的项目会有至少生成两个版本，debug和release，我们可以用两个任务assembleDebug和assembleRelease去分别生成两个版本，也可以使用assemble一下子生成两个版本。</p>
+<p>gradle支持任务名缩写，在我们执行<em>gradle assembleRelease</em>的时候，可以用<em>gradle aR</em>代替。</p>
+<h3 id="基本的构建定制">基本的构建定制</h3><p>我们可以在build.gradle文件中配置我们的程序版本等信息，从而可以生成多个版本的程序。<br>支持的配置有：    </p>
+<ul>
+<li>minSdkVersion    最小支持sdk版本 </li>
+<li>targetSdkVersion  编译时的目标sdk版本</li>
+<li>versionCode       程序版本号</li>
+<li>versionName       程序版本名称</li>
+<li>packageName       程序包名</li>
+<li>Package Name for the test application 测试用的程序包名</li>
+<li>Instrumentation test runner   测试用的instrumentation实例</li>
+</ul>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android &#123;&#10;    compileSdkVersion 19&#10;    buildToolsVersion &#34;19.0.0&#34;&#10;&#10;    defaultConfig &#123;&#10;        versionCode 12&#10;        versionName &#34;2.0&#34;&#10;        minSdkVersion 16&#10;        targetSdkVersion 16&#10;    &#125;&#10;&#125;&#10;``` &#10;&#10;### &#30446;&#24405;&#37197;&#32622;&#10;&#40664;&#35748;&#24773;&#20917;&#19979;&#39033;&#30446;&#30446;&#24405;&#26159;&#36825;&#26679;&#30340;&#10;&#26377;&#20004;&#20010;&#32452;&#20214;source sets&#65292;&#19968;&#20010;main&#65292;&#19968;&#20010;test&#65292;&#23545;&#24212;&#19979;&#38754;&#20004;&#20010;&#25991;&#20214;&#22841;&#12290;&#10;src/main/&#10;src/androidTest/&#10;&#10;&#28982;&#21518;&#23545;&#20110;&#27599;&#20010;&#32452;&#20214;&#30446;&#24405;&#37117;&#26377;&#20004;&#20010;&#30446;&#24405;&#65292;&#20998;&#21035;&#23384;&#20648;java&#20195;&#30721;&#21644;&#36164;&#28304;&#25991;&#20214;&#10;java/&#10;resources/&#10;&#10;&#23545;&#20110;android&#39033;&#30446;&#20013;&#21602;&#65292;&#23545;&#24212;&#30340;&#30446;&#24405;&#21644;&#25991;&#20214;&#26159;&#10;AndroidManifest.xml  //&#35813;&#25991;&#20214;src/androidTest/&#30446;&#24405;&#19979;&#19981;&#38656;&#35201;&#65292;&#31243;&#24207;&#25191;&#34892;&#26102;&#20250;&#33258;&#21160;&#26500;&#24314;&#10;res/&#10;assets/&#10;aidl/&#10;rs/&#10;jni/&#10;&#10;&#22914;&#26524;&#38656;&#35201;&#19978;&#38754;&#36825;&#20123;&#25991;&#20214;&#65292;&#20294;&#26159;&#19981;&#26159;&#22312;&#19978;&#38754;&#25152;&#35828;&#30340;&#30446;&#24405;&#65292;&#21017;&#38656;&#35201;&#35774;&#32622;&#12290;</span><br></pre></td></tr></table></figure></p>
+<p>sourceSets {<br>    main {<br>        java {<br>            srcDir ‘src/java’<br>        }<br>        resources {<br>            srcDir ‘src/resources’<br>        }<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#21487;&#20197;&#32473;main&#25110;&#32773;test&#35774;&#32622;&#26681;&#30446;&#24405;&#65292;&#22914;</span><br></pre></td></tr></table></figure></p>
+<p> sourceSets {<br>        androidTest.setRoot(‘tests’)<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#21487;&#20197;&#25351;&#23450;&#27599;&#31181;&#25991;&#20214;&#30340;&#23384;&#20648;&#36335;&#24452;</span><br></pre></td></tr></table></figure></p>
+<p>sourceSets {<br>        main {<br>            manifest.srcFile ‘AndroidManifest.xml’<br>            java.srcDirs = [‘src’]<br>            resources.srcDirs = [‘src’]<br>            aidl.srcDirs = [‘src’]<br>            renderscript.srcDirs = [‘src’]<br>            res.srcDirs = [‘res’]<br>            assets.srcDirs = [‘assets’]<br>        }<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#29305;&#21035;&#26159;&#25105;&#20204;&#30340;ndk&#29983;&#25104;&#30340;.so&#25991;&#20214;&#65292;&#36890;&#24120;&#25105;&#20204;&#19981;&#26159;&#25918;&#21040;jni&#30446;&#24405;&#20013;&#30340;&#65292;&#25105;&#20204;&#38656;&#35201;&#35774;&#32622;&#19968;&#19979;</span><br></pre></td></tr></table></figure></p>
+<p>sourceSets {<br>        main {<br>            jniLibs.srcDirs = [‘libs’]<br>        }<br>    }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;### &#31614;&#21517;&#37197;&#32622;&#10;&#21487;&#20197;&#32473;&#19981;&#21516;&#31867;&#22411;&#36827;&#34892;&#19981;&#21516;&#30340;&#37197;&#32622;&#65292;&#20808;&#30475;&#31034;&#20363;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>android {<br>    signingConfigs {<br>        debug {<br>            storeFile file(“debug.keystore”)<br>        }</p>
+<pre><code>    <span class="title">myConfig</span> {
+        <span class="title">storeFile</span> file(<span class="string">"other.keystore"</span>)
+        storePassword <span class="string">"android"</span>
+        keyAlias <span class="string">"androiddebugkey"</span>
+        keyPassword <span class="string">"android"</span>
+    }
+}
+
+buildTypes {
+    <span class="title">foo</span> {
+        <span class="title">debuggable</span> <span class="built_in">true</span>
+        jniDebugBuild <span class="built_in">true</span>
+        signingConfig signingConfigs.myConfig
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#19978;&#38754;&#30340;&#37197;&#32622;&#25991;&#20214;&#37197;&#32622;&#20004;&#20010;&#31867;&#22411;&#65292;&#19968;&#20010;&#26102;debug&#31867;&#22411;&#65292;&#19968;&#20010;&#26102;&#33258;&#24049;&#30340;&#33258;&#23450;&#20041;&#31867;&#22411;&#12290;&#20004;&#20010;&#20998;&#21035;&#20351;&#29992;&#20102;&#19981;&#21516;&#30340;&#31614;&#21517;&#65292;&#21516;&#26102;&#23545;&#20110;&#29983;&#25104;&#23494;&#38053;&#65292;&#35201;&#22635;&#20889;&#35774;&#32622;&#30340;&#23494;&#30721;&#12290;&#10;&#10;### &#20195;&#30721;&#28151;&#28102;&#35774;&#32622;&#10;&#30452;&#25509;&#30475;&#20195;&#30721;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>android {<br>    buildTypes {<br>        release {<br>            runProguard true<br>            proguardFile getDefaultProguardFile(‘proguard-android.txt’)<br>        }<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#20197;&#19978;&#26159;&#20351;&#29992;&#40664;&#35748;&#30340;proguard&#25991;&#20214;&#21435;&#36827;&#34892;&#28151;&#28102;&#65292;&#20063;&#21487;&#20197;&#20351;&#29992;&#33258;&#24049;&#32534;&#20889;&#30340;&#35268;&#21017;&#36827;&#34892;&#28151;&#28102;&#65292;`proguardFile &#39;some-other-rules.txt&#39;`&#10;&#10;### &#20381;&#36182;&#37197;&#32622;&#10;&#10;&#31243;&#24207;&#20013;&#20250;&#20381;&#36182;&#21035;&#30340;&#21253;&#65292;&#25110;&#32773;&#31243;&#24207;&#65292;&#38656;&#35201;&#24341;&#20837;&#21035;&#30340;&#31867;&#24211;&#12290;&#21069;&#38754;&#20063;&#35828;&#21040;&#20102;&#65292;&#25903;&#25345;maven&#12290;&#10;&#23545;&#20110;&#26412;&#22320;&#30340;&#31867;&#24211;&#65292;&#21487;&#20197;&#36825;&#26679;&#24341;&#20837;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>dependencies {<br>    compile files(‘libs/foo.jar’)   //单个文件<br>    compile fileTree(dir: ‘libs’, include: [‘*.jar’])  //多个文件<br>}</p>
+<p>android {<br>    …<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#23545;&#20110;maven&#20179;&#24211;&#25991;&#20214;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>repositories {<br>    mavenCentral()<br>}</p>
+<p>dependencies {<br>    compile ‘com.google.guava:guava:11.0.2’<br>}</p>
+<p>android {<br>    …<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#10;### &#36755;&#20986;&#19981;&#21516;&#37197;&#32622;&#30340;&#24212;&#29992;&#10;&#10;&#30475;&#20195;&#30721;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>android {<br>    …</p>
+<pre><code><span class="title">defaultConfig</span> {
+    <span class="title">minSdkVersion</span> <span class="number">8</span>
+    versionCode <span class="number">10</span>
+}
+
+productFlavors {
+    <span class="title">flavor1</span> {
+        <span class="title">packageName</span> <span class="string">"com.example.flavor1"</span>
+        versionCode <span class="number">20</span>
+    }
+
+    flavor2 {
+        <span class="title">packageName</span> <span class="string">"com.example.flavor2"</span>
+        minSdkVersion <span class="number">14</span>
+    }
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#36890;&#36807;&#20197;&#19978;&#35774;&#32622;&#65292;&#25105;&#20204;&#21487;&#20197;&#36755;&#20986;&#19981;&#21516;&#30340;&#20445;&#21629;&#19981;&#21516;&#30340;&#29256;&#26412;&#21495;&#65292;&#20197;&#21450;&#26368;&#23567;sdk&#30340;&#31243;&#24207;&#21253;&#12290;&#24403;&#28982;&#25105;&#20204;&#21487;&#20197;&#26681;&#25454;&#33258;&#24049;&#30340;&#38656;&#27714;&#21435;&#20570;&#20854;&#20182;&#30340;&#19981;&#21516;&#10;&#10;### &#29983;&#25104;&#22810;&#20010;&#28192;&#36947;&#21253;&#65288;&#20197;Umeng&#20026;&#20363;&#65289;&#10;&#25105;&#30340;&#23436;&#25972;&#37197;&#32622;&#25991;&#20214;</span><br></pre></td></tr></table></figure></p>
+<p>buildscript {<br>    repositories {<br>        mavenCentral()<br>    }<br>    dependencies {<br>        classpath ‘com.android.tools.build:gradle:0.9.+’<br>    }<br>}<br>apply plugin: ‘android’</p>
+<p>repositories {<br>        mavenCentral()<br>}</p>
+<p>android {<br>    compileSdkVersion 19<br>    buildToolsVersion “19.0.3”</p>
+<pre><code><span class="name">defaultConfig</span> {
+    minSdkVersion <span class="number">8</span>
+    targetSdkVersion <span class="number">19</span>
+    versionCode <span class="number">1</span>
+    versionName <span class="string">"1.0"</span>
+}
+
+<span class="name">sourceSets</span> {
+    <span class="keyword">main</span> {
+        jniLibs.srcDirs = [<span class="string">'libs'</span>]
+    }
+}
+
+<span class="name">lintOptions</span> {
+    abortOnError <span class="keyword">false</span>
+}
+</code></pre><p>//签名<br>    signingConfigs {<br>        //你自己的keystore信息<br>        release {<br>            storeFile file(“×.keystore”)<br>            storePassword “×××”<br>            keyAlias “××××”<br>            keyPassword “×××”<br>        }<br>    }</p>
+<pre><code>buildTypes {
+
+    debug {
+        signingConfig signingConfigs.release
+    }
+
+    release {
+        signingConfig signingConfigs.release
+        runProguard false
+        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.txt'</span>
+    }
+}
+
+//渠道Flavors，我这里写了一些常用的，你们自己改
+productFlavors {
+    //GooglePlay{}
+    //Store36<span class="number">0</span>{}
+    //QQ{}
+    //Taobao{}
+    //WanDouJia{}
+    //AnZhuo{}
+    //AnZhi{}
+    //BaiDu{}
+    //Store163{}
+    //GFeng{}
+    //AppChina{}
+    //EoeMarket{}
+    //Store91{}
+    //NDuo{}
+    xiaomi{}
+    umeng{}
+}
+</code></pre><p>}</p>
+<p>//替换AndroidManifest.xml的UMENG_CHANNEL_VALUE字符串为渠道名称<br>android.applicationVariants.all{ variant -&gt;<br>    variant.processManifest.doLast{</p>
+<pre><code>    <span class="comment">//之前这里用的copy{}，我换成了文件操作，这样可以在v1.11版本正常运行，并保持文件夹整洁</span>
+    <span class="comment">//${buildDir}是指./build文件夹</span>
+    <span class="comment">//${variant.dirName}是flavor/buildtype，例如GooglePlay/release，运行时会自动生成</span>
+    <span class="comment">//下面的路径是类似这样：./build/manifests/GooglePlay/release/AndroidManifest.xml</span>
+    <span class="keyword">def</span> manifestFile = <span class="string">"${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml"</span>
+
+    <span class="comment">//将字符串UMENG_CHANNEL_VALUE替换成flavor的名字</span>
+    <span class="keyword">def</span> updatedContent = <span class="keyword">new</span> <span class="keyword">File</span>(manifestFile).<span class="keyword">getText</span>(<span class="string">'UTF-8'</span>).replaceAll(<span class="string">"UMENG_CHANNEL_VALUE"</span>, <span class="string">"${variant.productFlavors[0].name}"</span>)
+    <span class="keyword">new</span> <span class="keyword">File</span>(manifestFile).<span class="keyword">write</span>(updatedContent, <span class="string">'UTF-8'</span>)
+
+    <span class="comment">//将此次flavor的AndroidManifest.xml文件指定为我们修改过的这个文件</span>
+    variant.processResources.manifestFile = <span class="keyword">file</span>(<span class="string">"${buildDir}/manifests/${variant.dirName}/AndroidManifest.xml"</span>)
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;&#20197;&#19978;&#30340;&#21151;&#33021;&#23601;&#26159;&#26367;&#25442;&#25105;&#30340;Manifest&#20013;&#30340;umeng&#28192;&#36947;&#26631;&#31034;&#65292;&#21516;&#26102;&#21435;&#29983;&#25104;&#19981;&#21516;&#30340;apk&#21253;&#12290;&#10;&#10;&#10;## &#26368;&#21518;&#35828;&#26126;&#10;&#31243;&#24207;&#22312;buid&#30340;&#26102;&#20505;&#65292;&#20250;&#25191;&#34892;lint&#26816;&#26597;&#65292;&#26377;&#20219;&#20309;&#30340;&#38169;&#35823;&#25110;&#32773;&#35686;&#21578;&#25552;&#31034;&#65292;&#37117;&#20250;&#32456;&#27490;&#26500;&#24314;&#65292;&#25105;&#20204;&#21487;&#20197;&#23558;&#20854;&#20851;&#25481;&#12290;</span><br></pre></td></tr></table></figure></p>
+<p>lintOptions {<br>        abortOnError false<br>    }<br>```</p>
+<h4 id="最后PS一下">最后PS一下</h4><p>本人使用gradle确实方便很多，虽然电脑配置低，build的时候比较慢。<br>内容呢，主要时参考谷歌官方的文档。<br>关于怎么安装，没有讲到，可以参考这篇文章：<a href="http://stormzhang.github.io/android/2014/02/28/android-gradle/" target="_blank" rel="external">http://stormzhang.github.io/android/2014/02/28/android-gradle/</a></p>
+<p>附上我参考的文档，没看懂的可以去看看。<a href="http://tools.android.com/tech-docs/new-build-system/user-guide" target="_blank" rel="external">http://tools.android.com/tech-docs/new-build-system/user-guide</a>  </p>
+<blockquote>
+<p>gradle升级了，我又写了一篇，地址这里:<a href="http://blog.isming.me/2014/11/21/use-gradle-new/">http://blog.isming.me/2014/11/21/use-gradle-new/</a></p>
+</blockquote>
+
+        
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/05/31/use-proguard/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用proguard混淆android代码
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/11/read-android-source-use-idea/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用Intellij IDEA阅读android源码</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+
+<div class="bdsharebuttonbox">
+    <i>分享到：</i>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{"bdCustomStyle":"bdshare:"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" ></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"isming"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Sam
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc22f102f5fbaa79cf43b93add1805f4f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

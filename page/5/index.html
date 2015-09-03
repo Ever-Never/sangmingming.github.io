@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>码农明明桑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="明明的个人技术记录">
+<meta property="og:type" content="website">
+<meta property="og:title" content="码农明明桑">
+<meta property="og:url" content="http://blog.isming.me/page/5/index.html">
+<meta property="og:site_name" content="码农明明桑">
+<meta property="og:description" content="明明的个人技术记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="码农明明桑">
+<meta name="twitter:description" content="明明的个人技术记录">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://isming.qiniudn.com/my_avatar.jpg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Sam</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">技术路上的一些记录</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/links">朋友</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sangmingming" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/mingmingsang" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Sam</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://isming.qiniudn.com/my_avatar.jpg">
+				<hgroup>
+				  <h1 class="header-author">Sam</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">技术路上的一些记录</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/links">朋友</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sangmingming" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/mingmingsang" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-android-message-loop-analyze" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/02/android-message-loop-analyze/" class="article-date">
+  	<time datetime="2014-04-02T15:53:59.000Z" itemprop="datePublished">2014年4月2日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/02/android-message-loop-analyze/">Android消息循环分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们的常用的系统中，程序的工作通常是有事件驱动和消息驱动两种方式，在Android系统中，Java应用程序是靠消息驱动来工作的。</p>
+<p>消息驱动的原理就是：       </p>
+<pre><code><span class="number">1.</span> 有一个消息队列，可以往这个队列中投递消息;      
+<span class="number">2.</span> 有一个消息循环，不断从消息队列中取出消息，然后进行处理。       
+</code></pre><p>在Android中通过Looper来封装消息循环，同时在其中封装了一个消息队列MessageQueue。<br>另外Android给我们提供了一个封装类，来执行消息的投递，消息的处理，即Handler。<br>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/04/02/android-message-loop-analyze/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-manage-activityde-lifecycle" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/25/manage-activityde-lifecycle/" class="article-date">
+  	<time datetime="2014-03-25T11:48:47.000Z" itemprop="datePublished">2014年3月25日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/25/manage-activityde-lifecycle/">管理Activity的生命周期</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Activity是android的四大组件之一，我们编写程序时，主要通过Activity来显示我们的UI。我们需要了解他的生命周期，以及 每个周期可以做什么。<br>一个Activity存在三种状态：</p>
+<h4 id="Resumed：">Resumed：</h4><p>activity显示在屏幕的最前面，并且获取用户焦点。 </p>
+<h4 id="Paused：">Paused：</h4><p>其他activity在当前activity之前，并获得焦点。当前activity还能够部分显示，仍然维护着所有状态，当内存低的时候才会被系统杀死。</p>
+<h4 id="Stopped：">Stopped：</h4><p>当前activity完全不可见。但是仍然存在，其他应用需要内存的时候会被杀死（不一定是低内存的时候）。</p>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/03/25/manage-activityde-lifecycle/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-toast-use" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/22/toast-use/" class="article-date">
+  	<time datetime="2014-03-22T01:44:05.000Z" itemprop="datePublished">2014年3月22日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/22/toast-use/">Toast的使用详解</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android中提供一种简单的Toast消息提示框机制，可以在用户点击了某些按钮后，提示用户一些信息，提示的信息不能被用户点击，Toast的提示信息根据用户设置的显示时间后自动消失。Toast的提示信息可以在调试程序的时候方便的显示某些想显示的东西,或者给用户提供友好的界面显示效果。</p>
+<h4 id="有两种方式去创建并且显示Toast：">有两种方式去创建并且显示Toast：</h4>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/03/22/toast-use/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-androidyi-bu-cao-zuo-zong-jie" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/16/androidyi-bu-cao-zuo-zong-jie/" class="article-date">
+  	<time datetime="2014-03-16T08:18:25.000Z" itemprop="datePublished">2014年3月16日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/16/androidyi-bu-cao-zuo-zong-jie/">android异步操作总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android中经常会有一些操作比如网络请求，文件读写，数据库操作，比较耗时，我们需要将其放在非UI线程去处理，此时，我们需要处理任务前后UI的变化和交互。我们需要通过类似js中异步请求处理，这里总结我所了解到的，方便自己记忆，也方便别人的浏览。</p>
+<ol>
+<li>AsyncTask</li>
+</ol>
+<blockquote>
+<p>new AysncTask().execute();</p>
+</blockquote>
+<p>AsyncTask会按照流程执行在UI线程和一个耗时的任务线程。</p>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/03/16/androidyi-bu-cao-zuo-zong-jie/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-jie-jue-ubuntuxia-sublime-text-3zhong-wen-shu-ru-de-wen-ti" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/03/15/jie-jue-ubuntuxia-sublime-text-3zhong-wen-shu-ru-de-wen-ti/" class="article-date">
+  	<time datetime="2014-03-14T16:24:45.000Z" itemprop="datePublished">2014年3月15日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/15/jie-jue-ubuntuxia-sublime-text-3zhong-wen-shu-ru-de-wen-ti/">解决Ubuntu下Sublime text 3中文输入的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>好久之前便听朋友说起Sublime Text这款软件很好用，终于这几天有空折腾，把软件给装起来了。用起来确实很不错，写代码很爽。<br>但是用了一段时间之后，我需要输入中文了，无论怎么切换输入法，都无法切换到中文。<br>网上搜索了一下，原来这是Bug。找解决方法吧。下面介绍我的解决方案，是大神cjacker解决成功的啦，我只是copy一下，方便大家在遇到这个问题的时候可以方便解决。<br>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/03/15/jie-jue-ubuntuxia-sublime-text-3zhong-wen-shu-ru-de-wen-ti/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-git-use-skill" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/11/18/git-use-skill/" class="article-date">
+  	<time datetime="2013-11-18T15:23:33.000Z" itemprop="datePublished">2013年11月18日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/18/git-use-skill/">git使用技巧</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这几天开始工作了，工作中使用了git进行项目管理，这才发现原来我以前所知道的git使用那只是一点皮毛。<br>写一些这几天用到的一些git技巧喽，以后有的话继续更新啦。                </p>
+<blockquote>
+<p>git status 查看当前的状态，那些文件修改了，那些文件创建还没有add的。        </p>
+</blockquote>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2013/11/18/git-use-skill/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-androidtu-xiang-kai-yuan-shi-tu-:smartimageview" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/09/11/androidtu-xiang-kai-yuan-shi-tu-:smartimageview/" class="article-date">
+  	<time datetime="2013-09-11T15:19:11.000Z" itemprop="datePublished">2013年9月11日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/09/11/androidtu-xiang-kai-yuan-shi-tu-:smartimageview/">Android图像开源视图：SmartImageView</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>项目需要，开发中需要加载图片，自己要写图片从网上下载的方法，还要写缓存，等等。  </p>
+<p>在网上找到一个开源项目，smartImageVIew，支持从URL和通讯录中获取图像，可以替代Android标准的ImageView。</p>
+<p>特征：</p>
+<pre><code>根据<span class="built_in">URL</span>地址装载图像；
+支持装载通讯录中的图像；
+支持异步装载；
+支持缓存；
+</code></pre><p>这个是作者的项目主页，有使用方法。</p>
+<p><a href="http://loopj.com/android-smart-image-view/" target="_blank" rel="external">http://loopj.com/android-smart-image-view/</a></p>
+<p>下载作者的jar包导入项目后，在xml中加入控件</p>
+<pre><code>&lt;<span class="tag">com</span><span class="class">.loopj</span><span class="class">.android</span><span class="class">.image</span><span class="class">.SmartImageView</span> <span class="rule"><span class="attribute">android</span>:<span class="value">id=<span class="string">"@+id/my_image"</span> /&gt;    </span></span>
+</code></pre><p>代码里找到该控件</p>
+<pre><code>SmartImageView myImage = <span class="params">(SmartImageView)</span> this.findViewById<span class="params">(R.id.my_image)</span>; 
+</code></pre><p>使用控件</p>
+<p>通过url加载图片</p>
+<pre><code><span class="tag">myImage</span><span class="class">.setImageUrl</span>("<span class="rule"><span class="attribute">http</span>:<span class="value">//www.awesomeimages.com/myawesomeimage.jpg<span class="string">");   </span></span></span>
+</code></pre><p>加载通讯录的图片</p>
+<pre><code><span class="tag">myImage</span><span class="class">.setImageContact</span>(<span class="tag">contactAddressBookId</span>);  
+</code></pre><p>github上面有源码，需要的可以看看：</p>
+<pre><code>http<span class="variable">s:</span>//github.<span class="keyword">com</span>/loopj/android-smart-image-<span class="keyword">view</span>    
+</code></pre>
+        
+          <!-- show an end symbol if the article is fully displayed -->
+          <hr/>
+          <p class="article-more-link">
+            <a>end</a>
+          </p>
+        
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-javazhong-hashmaphe-hashtablede-qu-bie" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/07/28/javazhong-hashmaphe-hashtablede-qu-bie/" class="article-date">
+  	<time datetime="2013-07-28T13:30:01.000Z" itemprop="datePublished">2013年7月28日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/28/javazhong-hashmaphe-hashtablede-qu-bie/">Java中HashMap和HashTable的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>面试中遇到，但是不会，回来google到，分享下吧，据说是老掉牙的问题<br>HashMap 是Hashtable 的轻量级实现（非线程安全的实现），他们都完成了Map 接口，主要区别在于HashMap 允许空（null）键值（key）,由于非线程安全，效率上可能高于Hashtable。</p>
+<p>HashMap 允许将null 作为一个entry 的key 或者value，而Hashtable 不允许。</p>
+<p>HashMap 把Hashtable 的contains 方法去掉了，改成containsvalue 和containsKey。因为contains方法容易让人引起误解。</p>
+<p>Hashtable 继承自Dictionary 类，而HashMap 是Java1.2 引进的Map interface 的一个实现。</p>
+<p>最大的不同是，Hashtable 的方法是Synchronize 的，而HashMap 不是，在多个线程访问Hashtable 时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。</p>
+<p>Hashtable 和HashMap 采用的hash/rehash 算法都大概一样，所以性能不会有很大的差异。</p>
+
+        
+          <!-- show an end symbol if the article is fully displayed -->
+          <hr/>
+          <p class="article-more-link">
+            <a>end</a>
+          </p>
+        
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-javazhong-collectionhe-collectionsde-qu-bie" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/07/23/javazhong-collectionhe-collectionsde-qu-bie/" class="article-date">
+  	<time datetime="2013-07-23T11:12:46.000Z" itemprop="datePublished">2013年7月23日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/23/javazhong-collectionhe-collectionsde-qu-bie/">Java中Collection和Collections的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天去一个公司参加面试遇到这个问题，Java中Collection和Collections的区别，当时不会，回来从网上找到，现在记录一下。</p>
+<p>1、java.util.Collection 是一个 <em>集合接口</em>。它提供了对集合对象进行基本操作的通用接口方法。Collection接口在Java 类库中有很多具体的实现。Collection接口的意义是为各种具体的集合提供了最大化的统一操作方式。</p>
+<p> Collection<br> ├List<br> │├LinkedList<br> │├ArrayList<br> │└Vector<br> │　└Stack└Set</p>
+<p>2、java.util.Collections 是一个包装类。它包含有各种有关集合操作的 <em>静态多态方法</em>。此类 <em>不能实例化</em> ，就像一个 <em>工具类</em>，服务于Java的Collection框架。</p>
+<pre><code>import java.util.ArrayList;      
+import java.util.Collections;      
+import java.util.List;      
+<span class="keyword">public</span> <span class="keyword">class</span> TestCollections {      
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>{     
+        <span class="comment">//注意List是实现Collection接口的       </span>
+        List <span class="built_in">list</span> = <span class="keyword">new</span> ArrayList();      
+        <span class="keyword">double</span> <span class="built_in">array</span>[] = { <span class="number">112</span>, <span class="number">111</span>, <span class="number">23</span>, <span class="number">456</span>, <span class="number">231</span> };      
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">array</span>.length; i++) {      
+            <span class="built_in">list</span>.add(<span class="keyword">new</span> Double(<span class="built_in">array</span>[i]));      
+        }      
+        Collections.sort(<span class="built_in">list</span>);      
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">array</span>.length; i++) {      
+            System.out.println(<span class="built_in">list</span>.get(i));      
+        }      
+        <span class="comment">// 结果：23.0 111.0 112.0 231.0 456.0      </span>
+    }      
+}
+</code></pre>
+        
+          <!-- show an end symbol if the article is fully displayed -->
+          <hr/>
+          <p class="article-more-link">
+            <a>end</a>
+          </p>
+        
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-linuxxia-svnde-shi-yong" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2013/07/12/linuxxia-svnde-shi-yong/" class="article-date">
+  	<time datetime="2013-07-12T13:30:52.000Z" itemprop="datePublished">2013年7月12日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/12/linuxxia-svnde-shi-yong/">Linux下SVN的使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天在新浪sae上搭建了个人博客，新浪sae采用svn的方式进行代码管理，之前在windows下面做svn操作都是采用TortoiseSVN，今天正好开机到了linux下面，那么好吧，就用svn传我的wordpress到sae中去。</p>
+<p>首先，安装svn。</p>
+<blockquote>
+<p>sudo apt-get install subversion</p>
+</blockquote>
+<p>ubuntu下面安装svn，就是这么简单。<br>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2013/07/12/linuxxia-svnde-shi-yong/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Sam
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc22f102f5fbaa79cf43b93add1805f4f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>

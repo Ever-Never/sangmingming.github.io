@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>码农明明桑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="明明的个人技术记录">
+<meta property="og:type" content="website">
+<meta property="og:title" content="码农明明桑">
+<meta property="og:url" content="http://blog.isming.me/page/3/index.html">
+<meta property="og:site_name" content="码农明明桑">
+<meta property="og:description" content="明明的个人技术记录">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="码农明明桑">
+<meta name="twitter:description" content="明明的个人技术记录">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="http://isming.qiniudn.com/my_avatar.jpg">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Sam</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">技术路上的一些记录</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/links">朋友</a></li>
+				        
+							<li><a href="/about">关于</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/sangmingming" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/mingmingsang" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Sam</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://isming.qiniudn.com/my_avatar.jpg">
+				<hgroup>
+				  <h1 class="header-author">Sam</h1>
+				</hgroup>
+			</div>
+			
+			<p class="header-subtitle">技术路上的一些记录</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/links">朋友</a></li>
+		        
+					<li><a href="/about">关于</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/sangmingming" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/mingmingsang" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-creating-app-with-material-design-two-list" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/21/creating-app-with-material-design-two-list/" class="article-date">
+  	<time datetime="2014-10-21T15:07:47.000Z" itemprop="datePublished">2014年10月21日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/21/creating-app-with-material-design-two-list/">创建Material Design风格的Android应用--创建列表和卡片</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次说过使用主题，应用Material Design的样式，同时卡片布局也是Material Design的重要组成部分，今天来写写。</p>
+<h3 id="引言">引言</h3><p>在程序中创建复杂的Material Design 样式的 List和Card,可以使用RecyclerView和CardView组件,这两个组件是在最新的support v7包(version 21)中提供的。因此需要引入依赖包：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'com.android.support:appcompat-v7:+'</span></span><br><span class="line">    compile <span class="string">'com.android.support:cardview-v7:+'</span></span><br><span class="line">    compile <span class="string">'com.android.support:recyclerview-v7:+'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/10/21/creating-app-with-material-design-two-list/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/material-design/">material design</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-creating-android-app-with-material-design-one-theme" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/18/creating-android-app-with-material-design-one-theme/" class="article-date">
+  	<time datetime="2014-10-18T14:43:18.000Z" itemprop="datePublished">2014年10月18日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/18/creating-android-app-with-material-design-one-theme/">创建Material Design风格的Android应用--应用主题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天正式发布了android 5,同时android developer网站也更新了，增加了创建Material Design风格的Android应用指南,也更新了Support Library，在support library增加了一些Material Design风格的控件和动画等，这里给大家简单介绍一下怎样开发material design风格的Android应用。</p>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/10/18/creating-android-app-with-material-design-one-theme/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/material-design/">material design</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-good-database-use" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/10/13/good-database-use/" class="article-date">
+  	<time datetime="2014-10-13T15:19:20.000Z" itemprop="datePublished">2014年10月13日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/13/good-database-use/">Android中个人推崇的数据库使用方式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>手机应用开发中经常会使用到数据库存储一些资料或者进行数据缓存，android中为我们提供了一个轻量的数据库，在上层进行了一层封装，同时还为我们提供了ContentProvider的框架，方便我们进行数据操作，以及在不同的程序之间进行数据共享。本文介绍一下，我在使用数据库的一些我认为比较好的习惯，欢迎与我讨论。<br>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/10/13/good-database-use/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlite/">sqlite</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-git-rebase-merge" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/26/git-rebase-merge/" class="article-date">
+  	<time datetime="2014-09-26T14:19:45.000Z" itemprop="datePublished">2014年9月26日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/26/git-rebase-merge/">git中merge和rebase的区别</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最开始实习的时候是使用svn，之后正式工作就一直在使用git，这样算起来，使用git也有两年的时间了。以前带我的同事，让我在拉代码的时候要我使用<code>git pull --rebase</code>，一直很纳闷为什么要那样做，后来遇到拉代码的时候有许多冲突要解决，然后去查找资料，才了解到其中的一些事情。今天分享一下，顺便自己也梳理一下。</p>
+<h3 id="git_pull">git pull</h3><p>git pull 是　git fetch + git merge FETCH_HEAD 的缩写。所以，默认情况下，git pull就是先fetch，然后执行merge 操作，如果加<em>–rebase</em> 参数，就是使用git rebase 代替git merge。</p>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/09/26/git-rebase-merge/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-draw-circle-image-in-android" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/19/draw-circle-image-in-android/" class="article-date">
+  	<time datetime="2014-09-19T14:48:47.000Z" itemprop="datePublished">2014年9月19日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/19/draw-circle-image-in-android/">在android中画圆形图片的几种办法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开发中经常会有一些需求,比如显示头像，显示一些特殊的需求,将图片显示成圆角或者圆形或者其他的一些形状。但是往往我们手上的图片或者从服务器获取到的图片都是方形的。这时候就需要我们自己进行处理，将图片处理成所需要的形状。正如茴香豆的的“茴”写法大于一种，经过我的研究，画出特殊图片的方法也不是一种，我发现了三种，且听我一一道来。</p>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/09/19/draw-circle-image-in-android/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-intents-filters" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/16/intents-filters/" class="article-date">
+  	<time datetime="2014-09-16T14:41:27.000Z" itemprop="datePublished">2014年9月16日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/16/intents-filters/">intent和intent过滤以及匹配规则</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Android系统中打开Activity，Service, BroadCast 都需要使用到Intent(意图),那么作为一个开发者就需要知道怎么使用Intent，知道怎么通过Intent的匹配规则打开其他的组件,或者给其他组件提供访问接口。因此在这里总结一下Intent和Intent的匹配规则。</p>
+<h3 id="Intent使用示例">Intent使用示例</h3><p>显式使用Intent</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(context, XXXActivity.class);</span><br><span class="line">intent.putExtra(Intent.EXTRA_TEXT, <span class="string">"string text"</span>);</span><br></pre></td></tr></table></figure>
+<p>隐式使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parser(<span class="string">"http://blog.isming.me"</span>));</span><br></pre></td></tr></table></figure>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/09/16/intents-filters/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-adb-use" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/08/26/adb-use/" class="article-date">
+  	<time datetime="2014-08-26T14:50:07.000Z" itemprop="datePublished">2014年8月26日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/26/adb-use/">常用有用的android adb命令</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>adb在开发中真的是时时都会用到，熟练使用可以帮助我们提高开发效率。前段时间看到一个外国程序员分享了一篇文章，觉得写的很好，介绍了一些很有意思的adb的命令，我就寻思着有空也写一篇，对于自己是一个总结，同时方便自己或者其他人以后查阅。</p>
+<blockquote>
+<p>想要能够在命令行里面敲adb能够使用，先要保证你的adb所在的目录，一般是sdk/platform-tools目录，要在环境变量中，想要怎么配环境变量，自己google去。</p>
+</blockquote>
+<p>首先要学会使用帮助，遇到不会用的命令可以直接敲<code>adb</code> 或者<code>adb --help</code>看帮助，帮助文档基本的命令都有。</p>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/08/26/adb-use/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-android-push" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/08/01/android-push/" class="article-date">
+  	<time datetime="2014-08-01T15:17:49.000Z" itemprop="datePublished">2014年8月1日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/01/android-push/">android推送技术方案与原理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>推送服务现在广泛的使用，几乎成了每个app的必备，现在呢，苹果上面有APNs，android上面游ＧＣＭ(中国不可用)。我也是经常使用第三方的推送，比如百度云推送，个推等等。但是一直想知道推送的原理，想着自己也能做出来，到网上搜到一些推送的方案（大段内容来自网上）。</p>
+<h3 id="方案一：使用GCM服务（Google_Cloud_Messaging）">方案一：使用GCM服务（Google Cloud Messaging）</h3><p>简介：Google在Android上标配了自己的推送GCM（Google Cloud Messageing），可以帮助开发人员给他们的Android应用程序发送数据。它是一个轻量级的消息，告诉Android应用程序有新的数据要获取从服务器，或者它可能是一个消息，其中包含了4KB的payload data（像即时通讯这类应用程序可以直接使用该payload消息）。GCM服务处理排队的消息，并把消息传递到目标设备上运行的Android应用程序。<br>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/08/01/android-push/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-remove-log-in-android" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/06/30/remove-log-in-android/" class="article-date">
+  	<time datetime="2014-06-30T08:21:00.000Z" itemprop="datePublished">2014年6月30日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/30/remove-log-in-android/">发布程序时移除Android 调试Log</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在Android开发中，我们使用android.util.Log来打印日志，方便我们的开发调试。但是对于正式发布的程序，我们并不希望这些Log信息显示，一方面对于用户来说影响机器性能，另一方面，其他开发者看到这些信息的时候，对我们应用程序的安全是有威胁的。所以，我们需要在正式发布时不让Log执行，或者将其移除。这里，我提供三种方法。</p>
+<h3 id="自己写一个Log的帮助类，在类中设置显示级别">自己写一个Log的帮助类，在类中设置显示级别</h3><p>示例代码如下，通过一个静态变量设置Log的显示级别。<br>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/06/30/remove-log-in-android/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gradle/">gradle</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-install-android-in-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/06/28/install-android-in-ubuntu/" class="article-date">
+  	<time datetime="2014-06-28T09:56:05.000Z" itemprop="datePublished">2014年6月28日</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/28/install-android-in-ubuntu/">在Ubuntu下配置Android开发环境</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主要包括：<code>jdk</code>  <code>idea</code> <code>android sdk</code></p>
+<h3 id="安装JDK">安装JDK</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:webupd8team/java   #&#28155;&#21152;&#28304;&#10;sudo apt-get update  &#9;&#9;&#9;&#9;&#9;&#9;  #&#26356;&#26032;&#20179;&#24211;&#10;sudo apt-get install oracle-java7-installer     #&#23433;&#35013;java7</span><br></pre></td></tr></table></figure>
+<p>执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></p>
+<p>检查java版本，确保已经正确安装jdk<br>
+        <hr/>
+        <p class="article-more-link">
+          <a  href="/2014/06/28/install-android-in-ubuntu/#more">more >></a>
+        </p>
+      
+    </div>
+    
+    <div class="article-info">
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Sam
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc22f102f5fbaa79cf43b93add1805f4f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  </div>
+</body>
+</html>
